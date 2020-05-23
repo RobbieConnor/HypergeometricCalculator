@@ -25,7 +25,7 @@ When creating private projects, I felt the need to use a Hypergeometric Calculat
 #### Import using Gradle
 [![](https://jitpack.io/v/robbieconnor/HypergeometricCalculator.svg)](https://jitpack.io/#robbieconnor/HypergeometricCalculator)
 
-`implementation 'com.github.robbieconnor:HypergeometricCalculator:v1.0.2'`
+`implementation 'com.github.robbieconnor:HypergeometricCalculator:1.0.2'`
 
 Ensure the Jitpack repository is included in your root build.gradle like so
 ```
