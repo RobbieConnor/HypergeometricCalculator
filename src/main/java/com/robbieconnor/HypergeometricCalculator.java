@@ -28,6 +28,10 @@ import java.math.BigDecimal;
 
 public class HypergeometricCalculator {
 
+    public static void main(String[] args) {
+        System.out.println(calculate(40, 6, 5, 1, 2));
+    }
+
     /**
      * Calculate the hypergeometric probability based on the parameters passed in
      * @param totalNumberOfObjects Total number of objects in the population
@@ -39,7 +43,8 @@ public class HypergeometricCalculator {
      * @throws ArithmeticException If number of successes possible is greater than the total number of objects
      * @throws IllegalArgumentException If an input parameter is less than or equal to 0
      */
-    public static double calculate(int totalNumberOfObjects, int numberOfSuccessesPossible, int sampleSize, int successesNeeded) throws ArithmeticException, IllegalArgumentException {
+
+    public static double calculate(int totalNumberOfObjects, int numberOfSuccessesPossible, int sampleSize, int successesNeeded, int numberOfDecimalPlaces) throws ArithmeticException, IllegalArgumentException {
 
         if (totalNumberOfObjects <= 0 || numberOfSuccessesPossible <= 0 || sampleSize <= 0 || successesNeeded <= 0) {
             throw new IllegalArgumentException("Negative number in calculation");
@@ -48,7 +53,6 @@ public class HypergeometricCalculator {
         } else if (totalNumberOfObjects < numberOfSuccessesPossible) {
             throw new ArithmeticException("Number of successes possible must be greater than or equal to total number of objects");
         }
-
 
         //Processed value to be returned at the end of the calculation.
         double probability;
@@ -71,8 +75,10 @@ public class HypergeometricCalculator {
 
         endResult = (((double) kCxConverted * NkCnxConverted) / NCnConverted);
 
-        //Returns endResult to 6 decimals places
-        probability = Double.parseDouble(String.format("%.6f", endResult));
+        String format = "%." + numberOfDecimalPlaces + "f";
+
+        //Returns endResult to specified number of decimals places
+        probability = Double.parseDouble(String.format(format, endResult));
         return probability;
     }
 
